@@ -10,7 +10,8 @@ package proyectcreator.gui;
 //import com.pagecreator.structure.JavaFile;
 //import com.pagecreator.structure.PageManager;
 //import com.pagecreator.structure.PropertiesManager;
-import Bussines.PageManager;
+import Bussines.JavaFileManager;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -91,6 +92,11 @@ public class POcreatorUI extends javax.swing.JDialog {
         jLabel4.setText("Author:");
 
         jTextField1.setText("JAT");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("PO Name");
 
@@ -99,6 +105,11 @@ public class POcreatorUI extends javax.swing.JDialog {
         jLabel6.setText("PO URL");
 
         jTextField2.setText("GenericPO");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -222,11 +233,11 @@ public class POcreatorUI extends javax.swing.JDialog {
 
             },
             new String [] {
-                "NAME", "TARGET", "TYPE", "CLICK", "PUT"
+                "NAME", "TARGET", "TYPE", "CLICK", "PUT", "SELECT"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -234,12 +245,13 @@ public class POcreatorUI extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(table);
-        table.getColumnModel().getColumn(0).setResizable(false);
-        table.getColumnModel().getColumn(1).setResizable(false);
-        table.getColumnModel().getColumn(2).setMinWidth(50);
-        table.getColumnModel().getColumn(2).setMaxWidth(50);
-        table.getColumnModel().getColumn(3).setMaxWidth(50);
-        table.getColumnModel().getColumn(4).setMaxWidth(50);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setResizable(false);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(2).setMinWidth(50);
+            table.getColumnModel().getColumn(2).setMaxWidth(50);
+            table.getColumnModel().getColumn(3).setMaxWidth(50);
+        }
 
         btnCancel.setText("CLOSE");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -316,17 +328,15 @@ public class POcreatorUI extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(true){
-            PageManager pmanager= new PageManager(jTextField2.getText(), rootPath ,poSource, factorySource,jTextField1.getText());
-            pmanager.abrirArchivo();
-            pmanager.write_header();
-            pmanager.write_variables(table);
-            pmanager.write_constructor(jTextField3.getText());
-            pmanager.write_metodos(table);
-            pmanager.write_validatePage(table);
-            pmanager.cerrarArchivo();
+        try {
+            JavaFileManager pmanager= new JavaFileManager(jTextField2.getText(), rootPath ,poSource, factorySource,jTextField1.getText(),jTextField3.getText(),table);         
+            pmanager.pushToPageObject();
+            pmanager.pushToFactory();
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error inesperado : "+ e.toString(), "ERROR",  JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.toString());
         }
-       
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnAddElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddElementActionPerformed
@@ -345,6 +355,14 @@ public class POcreatorUI extends javax.swing.JDialog {
 
     private void cbxTypeElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTypeElementActionPerformed
     }//GEN-LAST:event_cbxTypeElementActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

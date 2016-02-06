@@ -79,21 +79,21 @@ public class JATGUI extends javax.swing.JFrame {
             .addComponent(logo, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        createNewRepository.setText("Create New Repository");
+        createNewRepository.setText("Create New Environment");
         createNewRepository.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createNewRepositoryActionPerformed(evt);
             }
         });
 
-        openExistingRepository.setText("Open Existing Repository");
+        openExistingRepository.setText("Open Existing Environment");
         openExistingRepository.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openExistingRepositoryActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Open Recent Repository");
+        jLabel1.setText("Open Recent Environment");
 
         recentRepository1.setForeground(new java.awt.Color(0, 0, 255));
         recentRepository1.setText("jLabel2");

@@ -4,8 +4,9 @@
  */
 package proyectcreator.gui;
 
-import Bussines.PageManager;
+import Bussines.JavaFileManager;
 import Bussines.testWritter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,6 +64,11 @@ public class TestCreator extends javax.swing.JFrame {
         jLabel4.setText("Expected Results");
 
         testName.setText("GenericTest");
+        testName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testNameActionPerformed(evt);
+            }
+        });
 
         testCase.setText("GenericTestCase-1");
         testCase.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +106,7 @@ public class TestCreator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -189,7 +195,23 @@ public class TestCreator extends javax.swing.JFrame {
 //            pmanager.write_header();
 //            pmanager.write_constructor(author.getText());
 //            pmanager.cerrarArchivo();
-
+    /*    
+         try {
+            JavaFileManager pmanager= new JavaFileManager(testName.getText(), rootPath ,poSource, factorySource,jTextField1.getText());
+            pmanager.abrirArchivo();
+            pmanager.write_header();
+            pmanager.write_variables(table);
+            pmanager.write_constructor(jTextField3.getText());
+            pmanager.write_metodos(table);
+            pmanager.write_validatePage(table);
+            pmanager.cerrarArchivo();
+            pmanager.pushToFactory();
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error inesperado : "+ e.toString(), "ERROR",  JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.toString());
+        }
+*/
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -200,6 +222,10 @@ public class TestCreator extends javax.swing.JFrame {
     private void testCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testCaseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_testCaseActionPerformed
+
+    private void testNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_testNameActionPerformed
 
     /**
      * @param args the command line arguments

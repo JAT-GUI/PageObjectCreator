@@ -129,7 +129,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="createNewRepository">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Create New Repository"/>
+        <Property name="text" type="java.lang.String" value="Create New Environment"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createNewRepositoryActionPerformed"/>
@@ -137,7 +137,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="openExistingRepository">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Open Existing Repository"/>
+        <Property name="text" type="java.lang.String" value="Open Existing Environment"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openExistingRepositoryActionPerformed"/>
@@ -145,7 +145,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Open Recent Repository"/>
+        <Property name="text" type="java.lang.String" value="Open Recent Environment"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="recentRepository1">

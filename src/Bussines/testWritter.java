@@ -27,14 +27,14 @@ public class testWritter implements MyFile {
     private String footer;
     private String author;
     private final SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
-    private JavaFile file;
+    private ScriptManager file;
     File archivo;
     FileWriter escribir;
     String path;
 
     public testWritter(String titulo, String rootPath, String javapath, String propertiesPath, String author) {
         this.path = javapath;
-        file = new JavaFile(titulo, "java", rootPath, javapath, author);
+        file = new ScriptManager(titulo, "java", rootPath, javapath, author);
         archivo = new File(javapath + File.separator + file.absoluteName());
         abrirArchivo();
         //write_header();
@@ -142,7 +142,7 @@ public class testWritter implements MyFile {
     }
 
     @Override
-    public String build_line(String name_property, String target, String type, boolean key, boolean button) {
+    public String build_line(String name_property, String target, String type, boolean key, boolean button, boolean select) {
 
 //        String methods = getEnabledFunction(name_property) + values.br + getDisplayedFunction(name_property) + values.br;
 //        if (button) {
