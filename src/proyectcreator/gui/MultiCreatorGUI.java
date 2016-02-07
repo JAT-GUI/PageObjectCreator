@@ -5,6 +5,8 @@
 package proyectcreator.gui;
 
 import Bussines.JatFilesManager;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -51,6 +53,9 @@ public class MultiCreatorGUI extends javax.swing.JFrame {
         poFactoryLocation.setText(story.split(JatFilesManager.Factory_Link+":")[1].split(";")[0]);
         poLocation.setText(story.split(JatFilesManager.PO_Link+":")[1].split(";")[0]);
         testsLocation.setText(story.split(JatFilesManager.Test_Link+":")[1].substring(0,story.split(JatFilesManager.Test_Link+":")[1].length()-1));//.split(";")[0]);
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation((screenSize.width/2)-this.getWidth()/2,(screenSize.height/2)-this.getHeight()/2);
     }
     /**
      * This method is called from within the constructor to initialize the form.

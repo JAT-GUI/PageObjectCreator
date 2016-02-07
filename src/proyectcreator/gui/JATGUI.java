@@ -6,6 +6,7 @@ package proyectcreator.gui;
 
 import Bussines.JatFilesManager;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -35,6 +36,8 @@ public class JATGUI extends javax.swing.JFrame {
         //buscador.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         buscador.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         buscador.setDialogType(JFileChooser.SAVE_DIALOG);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation((screenSize.width/2)-this.getWidth()/2,(screenSize.height/2)-this.getHeight()/2);
     }
     
     /**

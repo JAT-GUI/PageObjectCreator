@@ -11,6 +11,8 @@ package proyectcreator.gui;
 //import com.pagecreator.structure.PageManager;
 //import com.pagecreator.structure.PropertiesManager;
 import Bussines.JavaFileManager;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,6 +40,8 @@ public class POcreatorUI extends javax.swing.JDialog {
         this.poSource = poSource;
         this.factorySource=factorySource;
         model= (DefaultTableModel) table.getModel();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation((screenSize.width/2)-this.getWidth()/2,(screenSize.height/2)-this.getHeight()/2);
     }
 
 

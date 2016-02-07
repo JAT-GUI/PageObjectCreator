@@ -5,6 +5,8 @@
 package proyectcreator.gui;
 
 import Bussines.JatFilesManager;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -37,6 +39,8 @@ public class ProyectCreatorGUI extends javax.swing.JFrame {
         buscador.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         buscador.setDialogType(JFileChooser.SAVE_DIALOG);
         //this.configFile = configFile;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation((screenSize.width/2)-this.getWidth()/2,(screenSize.height/2)-this.getHeight()/2);
     }
 
     /**
