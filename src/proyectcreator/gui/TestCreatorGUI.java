@@ -116,6 +116,11 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         });
 
         jButton2.setText("DELETE");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,6 +257,15 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         model.addRow(new Object[]{"","",""});
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(table.getSelectedRow()!=-1)
+            removeElement(table.getSelectedRow());
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void removeElement(int row){
+        model.removeRow(row);
+    }
     /**
      * @param args the command line arguments
      */
