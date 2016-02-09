@@ -50,6 +50,7 @@ public class MultiCreatorGUI extends javax.swing.JFrame {
         buscador.setCurrentDirectory(new File(this.rootPath));
         JatFilesManager declarationHistory = new JatFilesManager(this.rootPath);
         String story = declarationHistory.readConfigFile();
+        System.err.println(story+"********************************************");
         poFactoryLocation.setText(story.split(JatFilesManager.Factory_Link+":")[1].split(";")[0]);
         poLocation.setText(story.split(JatFilesManager.PO_Link+":")[1].split(";")[0]);
         testsLocation.setText(story.split(JatFilesManager.Test_Link+":")[1].substring(0,story.split(JatFilesManager.Test_Link+":")[1].length()-1));//.split(";")[0]);
@@ -250,12 +251,12 @@ public class MultiCreatorGUI extends javax.swing.JFrame {
 
     private void createPOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPOActionPerformed
         reWriteConfigFile();
-        POcreatorUI pOcreatorUI=new POcreatorUI(rootPath ,poLocation.getText(), poFactoryLocation.getText());
+        POcreatorGUI pOcreatorUI=new POcreatorGUI(rootPath ,poLocation.getText(), poFactoryLocation.getText());
         pOcreatorUI.setVisible(true);
     }//GEN-LAST:event_createPOActionPerformed
 
     private void createTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTestActionPerformed
-        TestCreator testCreator= new TestCreator(testsLocation.getText());
+        TestCreatorGUI testCreator= new TestCreatorGUI(testsLocation.getText());
         testCreator.setVisible(true);
     }//GEN-LAST:event_createTestActionPerformed
 

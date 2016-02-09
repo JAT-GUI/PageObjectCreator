@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Marco Antonio
  */
-public class POcreatorUI extends javax.swing.JDialog {
+public class POcreatorGUI extends javax.swing.JDialog {
 
     /**
      * Creates new form ConfigUI
@@ -34,7 +34,7 @@ public class POcreatorUI extends javax.swing.JDialog {
     private String PropertyPath;
     //private String PagePath;
     private String TestPath;
-    public POcreatorUI(String rootPath, String poSource, String factorySource) {
+    public POcreatorGUI(String rootPath, String poSource, String factorySource) {
         initComponents();
         this.rootPath = rootPath;
         this.poSource = poSource;
@@ -399,7 +399,7 @@ public class POcreatorUI extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //POcreatorUI dialog = new POcreatorUI(new javax.swing.JFrame(), true);
-                POcreatorUI dialog = new POcreatorUI("","" ,"" );
+                POcreatorGUI dialog = new POcreatorGUI("","" ,"" );
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
