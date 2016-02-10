@@ -23,10 +23,13 @@ public class JavaFileManager {
     
     private ScriptManager file;
     private ScriptManager fileFactory;
+    private testWritter fileTest;
     File archivo;
     File archivoFactory;
+    File archivoTest;
     FileWriter escribir;
     FileWriter escribirFactory;
+    FileWriter escribirTest;
     JTable table;
     String URL;
     
@@ -34,13 +37,23 @@ public class JavaFileManager {
     public JavaFileManager(String titulo,String rootPath,String javapath,String factoryPath,String author,String URL,JTable table ) {
        this.titulo = (titulo.substring(0,1).toUpperCase()+titulo.substring(1));
        file= new ScriptManager(this.titulo, "java", rootPath, javapath,author);
-       fileFactory= new ScriptManager(this.titulo, "java", rootPath, factoryPath,author); 
-       archivo = new File(javapath+File.separator+file.absoluteName());
-       archivoFactory = new File(factoryPath/*+File.separator+fileFactory+".java"*/);
-       this.URL = URL;
+       if(!"".equals(factoryPath)){
+            
+            fileFactory= new ScriptManager(this.titulo, "java", rootPath, factoryPath,author); 
+            archivo = new File(javapath+File.separator+file.absoluteName());
+            archivoFactory = new File(factoryPath/*+File.separator+fileFactory+".java"*/);
+            this.URL = URL;
+            
+            abrirArchivo();
+            write_header();
+       }
        this.table = table;
-       abrirArchivo();
-       write_header();
+       fileTest = new testWritter(this.titulo, rootPath, javapath, author);
+       
+       
+       archivoTest = new File(javapath+File.separator+file.absoluteName());
+       
+       
     }
     
     public final void abrirFactory() {
@@ -102,7 +115,26 @@ public class JavaFileManager {
         }
     }
 
-    public void escribirArchivo(String texto) {
+    public void cerrarArchivoTest() {
+        try {
+            //escribirFactory.write(fileFactory.cerrar_clase());
+            escribirTest.flush();
+            escribirTest.close();
+        } catch (IOException ex) {
+            Logger.getLogger("error al cerrar el archivo");
+        }
+    }
+    
+    public final void abrirArchivoTest() {
+        try {
+            escribirTest = new FileWriter(archivoTest, true);
+        } catch (IOException ex) {
+            Logger.getLogger("error al abrir en archivo");
+            System.out.println(ex);
+        }
+    }
+    
+    public void escribirArchivoTest(String texto) {
         try {
             escribir.write(texto + values.br);
 
@@ -222,6 +254,11 @@ public class JavaFileManager {
         cerrarArchivo();
     }
     
+    public void pushToTestCreator(){
+        abrirArchivoTest();
+        write_test();
+        cerrarArchivoTest();
+    }
     
     /**
      * @return the titulo
@@ -235,6 +272,31 @@ public class JavaFileManager {
      */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    private void abrirTest() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void escribirTest(String declararEnPageFactory) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void write_test() {
+         try {
+            escribirTest.write(fileTest.writeHeader());
+            try {
+                for (int i = 0; i < table.getRowCount(); i++) {
+                    escribirTest.write(fileTest.createStep((String)table.getValueAt(i, 0), (String)table.getValueAt(i, 1), (String)table.getValueAt(i, 2)));
+                }
+            } catch (IOException ex) {
+                Logger.getLogger("error al escribir cabecera en archivo: " + file.absoluteName());
+            } 
+            escribirTest.write(fileTest.armarTest());
+        } catch (IOException ex) {
+            Logger.getLogger("error al escribir cabecera en archivo: " + file.absoluteName());
+            System.out.println(ex);
+        }
     }
     
 

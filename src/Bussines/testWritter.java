@@ -31,14 +31,17 @@ public class testWritter implements MyFile {
     File archivo;
     FileWriter escribir;
     String path;
-
-    public testWritter(String titulo, String rootPath, String javapath, String propertiesPath, String author) {
-        this.path = javapath;
+    String titulo;
+    String packeage;
+    public testWritter(String titulo, String rootPath, String testSource, String author) {
+        //this.path = javapath;
         //file = new ScriptManager(titulo, "java", rootPath, javapath, author);
         //archivo = new File(javapath + File.separator + file.absoluteName());
         //abrirArchivo();
         //write_header();
-
+        this.author= author;
+        this.titulo= titulo;
+        this.packeage = obtener_package(rootPath, testSource);
     }
 
     public final void abrirArchivo() {
@@ -68,18 +71,19 @@ public class testWritter implements MyFile {
 //        }
 //
 //    }
-    public String writeHeader(String testName) {
+    public String writeHeader() {
+        String className = this.titulo.replace(" ", "_");
         this.header = 
-"package mf.client;\n" +
+"package "+this.packeage+";\n" +
 "\n" +
 "import org.junit.Assert;\n" +
 "import mfp.factory.webFactoryPattern;\n" +
 "import org.openqa.selenium.WebDriver;\n" +
 "import org.testng.annotations.Test;\n" +
-"public class sampleTest\n" +
+"public class "+className+"\n" +
 "\n" +
 "{\n" +
-"	public String baseUrl=\"\"//add your base Url;\n" +
+"	public String baseUrl=\"\";//add your base Url\n" +
 "	webFactoryPattern webDriver = new webFactoryPattern(baseUrl);\n" +
 "	public int waitTime = 3000;\n" +
 "	WebDriver driver = webFactoryPattern.buildBrowser(webFactoryPattern.Browser_Chrome);\n";
@@ -183,9 +187,9 @@ public class testWritter implements MyFile {
 "		try {\n" +
 "			//all code here\n" +
 "			Thread.sleep(waitTime);\n" +
-"			System.out.println("+Description+" : pass);\n";
+"			System.out.println(\""+Description+" : pass\");\n";
         
-        if("".equals(Expected)){
+        if(!"".equals(Expected)){
         allString = allString +
 "			//all assertions group for "+Expected +"\n"+
 "			//Assert.assertTrue(true);\n";
@@ -193,7 +197,7 @@ public class testWritter implements MyFile {
                 
         allString = allString+
 "		} catch (InterruptedException e) {\n" +
-"			System.out.println("+Description+" : fail);\n" +
+"			System.out.println(\""+Description+" : fail\");\n" +
 "			e.printStackTrace();\n" +
 "		}\n" +
 "	}\n";
@@ -202,7 +206,8 @@ public class testWritter implements MyFile {
 
     
     
-    public String armarTest(String testName, String testCase, String author, String steps, String expectedResults) {
+    public String armarTest() {
+        String testName = this.titulo;
         testName = "run_"+testName.replace(" ", "_");
         String testBody = //header+
 "	@Test\n" +
@@ -216,6 +221,28 @@ public class testWritter implements MyFile {
 "	}"
                 +cerrar_clase();
         return testBody;
+    }
+    
+    private String obtener_package(String rootPath, String destinyPath) {
+        String packageDestiny;
+        //packageDestiny = destinyPath.split(rootPath)[1];
+        packageDestiny = destinyPath.substring(rootPath.length());
+        packageDestiny = packageDestiny.replace('\\', '.');
+        //String pk[] = packageDestiny.split(".");
+        String toReturn = "";
+        for (int i = 2; i < 100; i++) {
+            try {
+                toReturn = toReturn+"."+packageDestiny.split("\\.")[i];
+            } catch (Exception e) {
+            }
+        }
+        toReturn = toReturn.substring(1);
+        if (toReturn.contains("java")) {
+            //toReturn = toReturn.split("\\.java")[0];
+            toReturn = toReturn.substring(0, toReturn.lastIndexOf("."));
+            toReturn = toReturn.substring(0, toReturn.lastIndexOf("."));
+        }
+        return toReturn;
     }
      /**
      * @param args the command line arguments
@@ -248,10 +275,10 @@ public class testWritter implements MyFile {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 String toWrite = "";
-                testWritter testt = new testWritter("", "", "", "", "");
-                toWrite = toWrite +testt.writeHeader("wrong login to google");
-                toWrite = toWrite +testt.createStep("step 1", "user go to google", "user should be able to reach theinput element to search something");
-                toWrite = toWrite +testt.armarTest("wrong login to google", "", "", "", "");
+                //testWritter testt = new testWritter("", "", "");
+                //toWrite = toWrite +testt.writeHeader("wrong login to google");
+                //toWrite = toWrite +testt.createStep("step 1", "user go to google", "user should be able to reach theinput element to search something");
+                //toWrite = toWrite +testt.armarTest("wrong login to google", "", "", "", "");
                 System.out.println(toWrite);
             }
         });
