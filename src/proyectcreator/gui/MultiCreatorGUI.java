@@ -256,7 +256,7 @@ public class MultiCreatorGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_createPOActionPerformed
 
     private void createTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTestActionPerformed
-        TestCreatorGUI testCreator= new TestCreatorGUI(testsLocation.getText());
+        TestCreatorGUI testCreator= new TestCreatorGUI(rootPath, testsLocation.getText());
         testCreator.setVisible(true);
     }//GEN-LAST:event_createTestActionPerformed
 

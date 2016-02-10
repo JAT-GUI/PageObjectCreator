@@ -22,9 +22,11 @@ public class TestCreatorGUI extends javax.swing.JFrame {
      */
     String testSource;
     DefaultTableModel model;
-    public TestCreatorGUI(String testSource) {
+    String rootPath;
+    public TestCreatorGUI(String rootPath, String testSource) {
         
         initComponents();
+        this.rootPath = rootPath;
         model= (DefaultTableModel) table.getModel();
         this.testSource=testSource;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -42,8 +44,6 @@ public class TestCreatorGUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         textTestName = new javax.swing.JTextField();
-        textTestCase = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         textAuthor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
@@ -63,15 +63,6 @@ public class TestCreatorGUI extends javax.swing.JFrame {
                 textTestNameActionPerformed(evt);
             }
         });
-
-        textTestCase.setText("GenericTestCase-1");
-        textTestCase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textTestCaseActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Test Case");
 
         textAuthor.setText("JAT");
 
@@ -133,32 +124,27 @@ public class TestCreatorGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textAuthor)
-                                    .addComponent(textTestCase)
-                                    .addComponent(textTestName))))
-                        .addContainerGap())
+                    .addComponent(jScrollPane3)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancel)
-                        .addGap(12, 12, 12))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(20, 20, 20))
+                        .addComponent(btnCancel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(8, 8, 8))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textAuthor)
+                            .addComponent(textTestName))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,23 +155,19 @@ public class TestCreatorGUI extends javax.swing.JFrame {
                     .addComponent(textTestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(textTestCase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(textAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1))
                 .addGap(9, 9, 9)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNext)
                     .addComponent(btnCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,17 +177,18 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         JavaFileManager pmanager;
         String testCaseName=this.textTestName.getText();
         String testCaseAutor=this.textAuthor.getText();
-        String testCase=this.textTestCase.getText();
         try {
-            pmanager= new JavaFileManager(testCaseName,
-                    "C:\\Users\\Alcides\\JAT-SW1\\JAT-Framework\\JATGUIFrameworkTest01",
+            pmanager= new JavaFileManager(
+                    testCaseName,
+                    this.rootPath,
                     this.testSource,
-                    "C:\\Users\\Alcides\\JAT-SW1\\JAT-Framework\\JATGUIFrameworkTest01\\src\\mfp\\factory\\webFactoryPattern.java",
+                    "",
                     testCaseAutor,
                     "URL", 
                     table);         
             //pmanager.pushToPageObject();
             //pmanager.pushToFactory();
+            pmanager.pushToTestCreator();
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado : "+ e.toString(), "ERROR",  JOptionPane.WARNING_MESSAGE);
@@ -269,10 +252,6 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void textTestCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTestCaseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textTestCaseActionPerformed
-
     private void textTestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTestNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textTestNameActionPerformed
@@ -332,12 +311,10 @@ public class TestCreatorGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable table;
     private javax.swing.JTextField textAuthor;
-    private javax.swing.JTextField textTestCase;
     private javax.swing.JTextField textTestName;
     // End of variables declaration//GEN-END:variables
 }
