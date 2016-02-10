@@ -37,9 +37,9 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="author" max="32767" attributes="0"/>
-                                  <Component id="testCase" max="32767" attributes="0"/>
-                                  <Component id="testName" max="32767" attributes="0"/>
+                                  <Component id="textAuthor" max="32767" attributes="0"/>
+                                  <Component id="textTestCase" max="32767" attributes="0"/>
+                                  <Component id="textTestName" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -69,17 +69,17 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="testName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textTestName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="testCase" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textTestCase" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="author" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -104,20 +104,20 @@
         <Property name="text" type="java.lang.String" value="Test Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="testName">
+    <Component class="javax.swing.JTextField" name="textTestName">
       <Properties>
         <Property name="text" type="java.lang.String" value="GenericTest"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="testNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textTestNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="testCase">
+    <Component class="javax.swing.JTextField" name="textTestCase">
       <Properties>
         <Property name="text" type="java.lang.String" value="GenericTestCase-1"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="testCaseActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textTestCaseActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -125,7 +125,7 @@
         <Property name="text" type="java.lang.String" value="Test Case"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="author">
+    <Component class="javax.swing.JTextField" name="textAuthor">
       <Properties>
         <Property name="text" type="java.lang.String" value="JAT"/>
       </Properties>

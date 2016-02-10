@@ -37,10 +37,10 @@ public class TestCreatorGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        testName = new javax.swing.JTextField();
-        testCase = new javax.swing.JTextField();
+        textTestName = new javax.swing.JTextField();
+        textTestCase = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        author = new javax.swing.JTextField();
+        textAuthor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
@@ -53,23 +53,23 @@ public class TestCreatorGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Test Name");
 
-        testName.setText("GenericTest");
-        testName.addActionListener(new java.awt.event.ActionListener() {
+        textTestName.setText("GenericTest");
+        textTestName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testNameActionPerformed(evt);
+                textTestNameActionPerformed(evt);
             }
         });
 
-        testCase.setText("GenericTestCase-1");
-        testCase.addActionListener(new java.awt.event.ActionListener() {
+        textTestCase.setText("GenericTestCase-1");
+        textTestCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testCaseActionPerformed(evt);
+                textTestCaseActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Test Case");
 
-        author.setText("JAT");
+        textAuthor.setText("JAT");
 
         jLabel3.setText("Author");
 
@@ -139,9 +139,9 @@ public class TestCreatorGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(author)
-                                    .addComponent(testCase)
-                                    .addComponent(testName))))
+                                    .addComponent(textAuthor)
+                                    .addComponent(textTestCase)
+                                    .addComponent(textTestName))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -162,15 +162,15 @@ public class TestCreatorGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(testName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textTestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(testCase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textTestCase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(author, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,7 +188,28 @@ public class TestCreatorGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        //manager.armar_pageDeclaration();
+        JavaFileManager pmanager;
+        String testCaseName=this.textTestName.getText();
+        String testCaseAutor=this.textAuthor.getText();
+        String testCase=this.textTestCase.getText();
+        try {
+            pmanager= new JavaFileManager(testCaseName,
+                    "C:\\Users\\Alcides\\JAT-SW1\\JAT-Framework\\JATGUIFrameworkTest01",
+                    this.testSource,
+                    "C:\\Users\\Alcides\\JAT-SW1\\JAT-Framework\\JATGUIFrameworkTest01\\src\\mfp\\factory\\webFactoryPattern.java",
+                    testCaseAutor,
+                    "URL", 
+                    table);         
+            //pmanager.pushToPageObject();
+            //pmanager.pushToFactory();
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error inesperado : "+ e.toString(), "ERROR",  JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.toString());
+        }
+
+
+//manager.armar_pageDeclaration();
         //manager.cerrar_archivos();
 
         //        if(checkboxProperties.isSelected()){
@@ -244,13 +265,13 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void testCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testCaseActionPerformed
+    private void textTestCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTestCaseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_testCaseActionPerformed
+    }//GEN-LAST:event_textTestCaseActionPerformed
 
-    private void testNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testNameActionPerformed
+    private void textTestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTestNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_testNameActionPerformed
+    }//GEN-LAST:event_textTestNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -302,7 +323,6 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField author;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton jButton1;
@@ -312,7 +332,8 @@ public class TestCreatorGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable table;
-    private javax.swing.JTextField testCase;
-    private javax.swing.JTextField testName;
+    private javax.swing.JTextField textAuthor;
+    private javax.swing.JTextField textTestCase;
+    private javax.swing.JTextField textTestName;
     // End of variables declaration//GEN-END:variables
 }
