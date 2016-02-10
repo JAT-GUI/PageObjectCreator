@@ -3,3 +3,7 @@ build
 *.class
 *.properties
 /dist/
+build/clases/Bussines/*.class
+nbproject/*.xml
+nbproject/*.properties
+nbproject/private/*.xml
