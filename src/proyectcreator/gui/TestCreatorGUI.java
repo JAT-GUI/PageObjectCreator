@@ -6,6 +6,8 @@ package proyectcreator.gui;
 
 import Bussines.JavaFileManager;
 import Bussines.testWritter;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +27,8 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         initComponents();
         model= (DefaultTableModel) table.getModel();
         this.testSource=testSource;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation((screenSize.width/2)-this.getWidth()/2,(screenSize.height/2)-this.getHeight()/2);
     }
 
     /**

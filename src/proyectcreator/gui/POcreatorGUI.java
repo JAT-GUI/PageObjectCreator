@@ -343,8 +343,10 @@ public class POcreatorGUI extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
+    
     private void btnAddElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddElementActionPerformed
-       addElement(textfNameElement.getText(), textfTarget.getText(), (String)cbxTypeElement.getSelectedItem());
+        String target=textfTarget.getText().replaceAll("\"", "'");
+        addElement(textfNameElement.getText(), target, (String)cbxTypeElement.getSelectedItem());
         limpiar();
     }//GEN-LAST:event_btnAddElementActionPerformed
 

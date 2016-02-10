@@ -155,7 +155,7 @@ public class ScriptManager implements MyFile {
     }
 
     private String getEnabledFunction(String name_property) {
-        String name_propertyMethods = ((char) (name_property.charAt(0) - 32)) + name_property.substring(1);
+        String name_propertyMethods = name_property.substring(0,1).toLowerCase() + name_property.substring(1);
         String comment = 
                   "	 /**\n"
                 + "	 * This function Demonstrates is" + name_propertyMethods + "Enabled().\n"
