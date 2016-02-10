@@ -208,7 +208,7 @@ public class testWritter implements MyFile {
     
     public String armarTest() {
         String testName = this.titulo;
-        testName = "run_"+testName.replace(" ", "_");
+        testName = "run"+testName.replace(" ", "_");
         String testBody = //header+
 "	@Test\n" +
 "	// This is TestNG annotation\n" +
