@@ -193,6 +193,7 @@ public class TestCreatorGUI extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado : "+ e.toString(), "ERROR",  JOptionPane.WARNING_MESSAGE);
             System.out.println(e.toString());
+            throw (e);
         }
 
 

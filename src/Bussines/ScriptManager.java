@@ -282,7 +282,8 @@ public class ScriptManager implements MyFile {
         String packageDestiny;
         //packageDestiny = destinyPath.split(rootPath)[1];
         packageDestiny = destinyPath.substring(rootPath.length());
-        packageDestiny = packageDestiny.replace('\\', '.');
+        char ch=System.getProperty("os.name").contains("Mac")?'/':'\\';
+        packageDestiny = packageDestiny.replace(ch, '.');
         //String pk[] = packageDestiny.split(".");
         String toReturn = "";
         for (int i = 2; i < 100; i++) {
